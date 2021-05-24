@@ -6,8 +6,10 @@ const shortid = require("shortid");
 exports.signup = (req, res) => {
   User.findOne({ email: req.body.email }).exec((error, user) => {
     if (user)
+      alert("Admin already registered");
       return res.status(400).json({
         message: "Admin already registered",
+ 
       });
 
     User.estimatedDocumentCount(async (err, count) => {
